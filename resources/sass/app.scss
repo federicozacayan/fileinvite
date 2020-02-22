@@ -1,0 +1,103 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    a:first-child{
+        border: 2px solid gray;
+        width: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: .5rem;
+        height: 2rem;
+        text-decoration: none;
+        background-color: white;
+        color: gray;
+    }
+    a{
+        background-color: gray;
+        width: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: .5rem;
+        height: 2rem;
+        text-decoration: none;
+        color: white;
+        transition: all .2s ease-in-out;
+        left: -2.5px;
+        top: -2.5px;
+        box-shadow: 5px 5px black;
+        position: relative;
+    }
+    a:hover{
+        
+        left: -1.5px;
+        top: -1.5px;
+        box-shadow: 3px 3px black;
+    }
+  }
+
+ul.files{
+    li{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        i{
+            display: block;
+        }
+    }
+}  
+.row{
+    & > div{
+        margin-bottom: 1rem;
+    }
+    div.card-body{
+        margin-bottom: 0;
+    }
+}
+
+//http://localhost/admin/requirement/1/edit
+.new-file{
+    float: right;
+    margin-top: .5rem;
+}
+.flex{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-col{
+    display: flex;
+    flex-flow: column;
+}
+.green{
+    color: green;
+}
+.gray{
+    color: gray;
+}
+.red{
+    color: red;
+}
+.abailable{
+    color: #227dc7;
+}
+span{
+    text-align: center;
+}
+
+#days{
+    text-align: right;
+}
+
