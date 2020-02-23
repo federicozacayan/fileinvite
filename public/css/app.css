@@ -10986,3 +10986,7 @@ span {
   text-align: right;
 }
 
+.alert ul {
+  margin: 0;
+}
+

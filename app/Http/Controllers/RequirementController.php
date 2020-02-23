@@ -52,6 +52,7 @@ class RequirementController extends Controller
             'days' => ['required', 'numeric']
             ]);
         $requirement = Requirement::create($request->all());
+        $request->session()->flash('success', 'Requirement "'.$requirement->name.'" created successfully.');
         return redirect("admin/requirement/$requirement->id/edit");
     }
 
@@ -110,6 +111,7 @@ class RequirementController extends Controller
             'days' => ['required', 'numeric']
             ]);
         $requirement->update($request->all());
+        $request->session()->flash('success', 'Requirement "'.$requirement->name.'" updated successfully.');
         return redirect("admin/requirement/".$requirement->id."/edit");
     }
 

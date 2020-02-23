@@ -10,7 +10,21 @@
                 <div class="card-header"><i class='fas fa-sitemap'></i> Search {{ __('Requirements') }}</div>
 
                 <div class="card-body">
-                    
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                            <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <label for="exampleInputEmail1">Search:</label>
                     <input type="text" class="form-control" id="search-requirement" 
                     placeholder="#R400 - Request Benefit">

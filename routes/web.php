@@ -18,7 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/requirement/{id}', 'HomeController@requirement')->name('home');
+Route::get('files', 'FilesController@store');
+Route::get('file/{id}', 'FilesController@download')->name('file');
 
 
 Route::prefix('admin')->group(function () {
@@ -36,15 +38,15 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/password/reset/{token}','AdminResetPasswordController@showResetForm')->name('admin.password.reset');
     Route::post('/password/reset','AdminResetPasswordController@reset')->name('admin.password.update');
-
-    // Route::get('/requirement', 'RequirementController@index');
-    // Route::post('/requirement/form', 'RequirementController@store');
-    
+   
     Route::resource('requirement', 'RequirementController');
     Route::get('/requirement/search/{name}', 'RequirementController@search');
     Route::resource('filetype', 'FileTypeController');
     Route::resource('customer', 'CustomerController');
     Route::get('/customer/search/{name}', 'CustomerController@search');
     Route::resource('process', 'ProcessController');
+    Route::get('/mail', 'ProcessController@mail')->name('process.mail');
+    
+    Route::get('/file/{id}', 'FilesController@adminDownload')->name('admin.file');
 
 });

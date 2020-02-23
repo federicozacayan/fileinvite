@@ -10,4 +10,7 @@ class Process extends Model
     function customer(){
         return $this->belongsTo('App\Customer', 'customer_id');
     }
+    function requirement(){
+        return $this->belongsTo('App\Requirement', 'requirement_id');
+    }
 }

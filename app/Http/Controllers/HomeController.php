@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Process;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        // DB::enableQueryLog();
+  
+        $requirements = DB::table('processes')
+        ->join('customers', 'customers.id', '=', 'processes.customer_id')
+        ->join('requirements', 'requirements.id', '=', 'processes.requirement_id')
+        ->select('processes.id', 'requirements.name')
+        ->where('customers.email', '=', $user->email)
+        ->get();
+
+        return view('home', ['data'=>$requirements]);
+    }
+
+
+    public function requirement($id){
+        $process = new ProcessController();
+        $data = $process->getDataToEdit($id);
+        return view('requirement', $data);
     }
 }

@@ -10,7 +10,15 @@
                 <div class="card-header"><i class='fas fa-user'></i> {{ __('Customers') }}</div>
 
                 <div class="card-body">
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <label for="search-customer">Search:</label>
                     <input type="text" class="form-control" id="search-customer" 
                     placeholder="#C084 Jhon Doe">

@@ -10,6 +10,21 @@
                 <div class="card-header"><i class='fas fa-user'></i> {{ __('Update Customer') }}</div>
                 
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                            <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <form id="update-customer" action="{{ route('customer.update', [$customer->id]) }}" method="POST" >
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" id="customer_id" value="{{ $customer->id }}">
@@ -37,8 +52,8 @@
                         @if (isset($requirements) && count($requirements) > 0)
                             @foreach ($requirements as $requirement)
                                 <li class="list-group-item flex">
+                                    <!-- <i class="fas fa-toggle-off"></i> -->
                                     <!-- <i class="fas fa-toggle-on"></i> -->
-                                    <i class="fas fa-toggle-off"></i>
                                     <i class='fas fa-sitemap'></i>
                                     <span>#R{{$requirement->id}} - {{$requirement->name}}</span>
                                     <a href="{{ route('process.edit', ['process' => $requirement->processes_id]) }}">

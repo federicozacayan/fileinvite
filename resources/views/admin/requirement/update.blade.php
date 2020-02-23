@@ -10,31 +10,37 @@
                 <div class="card-header"><i class='fas fa-sitemap'></i> {{ __('Update Requirement') }} </div>
                 
                 <div class="card-body">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                            <strong>{{ $message }}</strong>
                     </div>
-                @endif
-                <form id="update-requirement" action="{{ route('requirement.update', [$requirement->id]) }}" method="POST" >
-                    <input type="hidden" name="_method" value="PUT">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name"
-                    placeholder="Request Benefit" 
-                    value="{{ $requirement->name }}">
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form id="update-requirement" action="{{ route('requirement.update', [$requirement->id]) }}" method="POST" >
+                        <input type="hidden" name="_method" value="PUT">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                        placeholder="Request Benefit" 
+                        value="{{ $requirement->name }}">
+                        <br>
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="3">{{ $requirement->description }}</textarea>
+                        <br>
+                        <label for="name">How many days to upload the files:</label>
+                        <input type="text" class="form-control" name="days"
+                        placeholder="5" value="{{ $requirement->days }}">
+                        @csrf
+                    </form>
                     <br>
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description" rows="3">{{ $requirement->description }}</textarea>
-                    <br>
-                    <label for="name">How many days to upload the files:</label>
-                    <input type="text" class="form-control" name="days"
-                     placeholder="5" value="{{ $requirement->days }}">
-                    @csrf
-                </form>
-                <br>
 
                     
                     <ul class="list-group "> 

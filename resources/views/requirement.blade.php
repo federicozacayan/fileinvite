@@ -12,6 +12,12 @@
                 </div>
                 
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                            <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -23,14 +29,10 @@
                     @endif
                     
                 <div>
-                    <a href="{{ route('customer.edit', [$files[0]->customer_id])}}">
-                        <b><i class='fas fa-user'></i> {{ $files[0]->customer_name }}</b>
-                        <b>&lt;{{ $files[0]->customer_email }}&gt;</b>
-                    </a>
+                    <b><i class='fas fa-user'></i> {{ $files[0]->customer_name }}</b>
+                    <b>&lt;{{ $files[0]->customer_email }}&gt;</b>
                 </div>
-                <!-- <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2 weeks</div>
-                </div> -->
+                
                 <h2 class="d-flex justify-content-center"><b>{{ ($isPast)?'Late '.$left.' days':$left.' days left' }}</b></h2>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped bg-{{$bgColor}}" role="progressbar" style="width: {{ $progress }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
@@ -63,15 +65,6 @@
                                         <span>#F{{$file->file_type_id}} - {{$file->file_type_name}}</span>
                                         <a href="#" title="{{$file->file_type_description}}"><i class="fa fa-info-circle"></i></a>
                                      </span>
-                                    <!-- <span>2020-02-20 17:40:25</span>
-                                    <i aria-hidden="true" class="fas fa-envelope-open"></i> 
-                                    <i aria-hidden="true" class="fas fa-clock"></i> 
-                                    <i aria-hidden="true" class="fas fa-eye-slash"></i> 
-                                    <i aria-hidden="true" class="fas fa-eye"></i> 
-                                    <i aria-hidden="true" class="fas fas fa-exclamation-circle"></i> 
-                                    <i class="fas fa-cloud-download-alt"></i> 
-                                    <i class="fas fa-download"></i> 
-                                    <i class="fa fa-times-circle"></i> -->
                                     
                                     <div>
                                         <i aria-hidden="true" class="fas fa-thumbs-up gray"></i> 
@@ -80,43 +73,63 @@
                                     @if($file->file_name == null)
                                         <!-- <i class="fa fa-times-circle"></i> -->
                                         <i aria-hidden="true" class="fas fa-eye-slash gray"></i> 
-                                        <i class="fas fa-cloud-download-alt gray"></i>
-                                        <i class="fas fa-hourglass-half red"></i>
+
                                         
                                     @else
                                         @if($file->status)
                                         <i aria-hidden="true" class="fas fa-eye"></i> 
                                         @else
                                         <i aria-hidden="true" class="fas fa-eye-slash"></i> 
-                                        @endif
-                                        <a href="{{  route('admin.file',[$file->file_id]) }}" title="{{$file->file_name}}"><i class="fas fa-cloud-download-alt abailable"></i></a>
+                                        @endif 
+                                        <a href="{{  route('file',[$file->file_id]) }}" title="{{$file->file_name}}"><i class="fas fa-cloud-download-alt abailable"></i></a>
                                         <i aria-hidden="true" class="fas fa-check-circle green"></i>
                                     @endif
                                     
                                 </li>
+                                @if($file->file_name == null)
+                                <li class="list-group-item flex">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                        <form id="update-file-{{$file->file_type_id}}" 
+                                            action="{{ route('files.store') }}" 
+                                            method="POST" 
+                                            enctype="multipart/form-data">
+                                            <input type="file" class="custom-file-input" id="file{{$file->file_type_id}}" name="file">
+                                            <label class="custom-file-label" for="file{{$file->file_type_id}}">Choose file</label>
+                                            <input type="hidden" name="status" value="{}">
+                                            <input type="hidden" name="processes_id" value="{{$file->processes_id}}">
+                                            <input type="hidden" name="file_types_id" value="{{$file->file_type_id}}">
+                                            
+                                            {{ csrf_field() }}
+                                        </form>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="submit" 
+                                            onclick="event.preventDefault();
+                                                    document.getElementById(
+                                                        'update-file-{{$file->file_type_id}}'
+                                                    ).submit();"
+                                            ><i class="fas fa-cloud-upload-alt green"></i></button>
+                                        </div>
+                                    </div>
+                                </li>
+                                @endif
                             @endforeach
                         @else
     
                         @endif
-
-                        <!-- <li class="list-group-item">
-                        <form id="create-requirement" action="{{ route('filetype.store') }}" method="POST" >
-                            <label for="feedback">Send Feedback:</label>
-                            <textarea class="form-control" id="feedback" name="feedback" rows="3"></textarea>
-                            <button type="submit" class="btn btn-secondary btn-sm new-file">
-                                <i class="fas fa-paper-plane"></i>
-                                <span>Send Feedback</span>
-                            </button>
-                            @csrf
-                        </form>
-                        </li> -->
+                        
+                        
                     </ul>
-                    <!-- <br>
-                    <button type="submit" class="btn btn-primary" 
-                    onclick="location.href='{{route('requirement.create')}}'">
-                    <i class='fas fa-save'></i>
-                    Save changes
-                    </button> -->
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>

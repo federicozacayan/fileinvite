@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Requirement::class, function (Faker $faker) {
     return [
-        'name' => 'Req. '.$faker->name,
-        'description' => 'Some description',
+        'name' => 'Driver Licence Adquisition - '.rand(),
+        'description' => 'With this process we can iniciate tthe colecting files for Driver Licence adquisition.',
         'days' => 5
     ];
 });

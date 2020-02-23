@@ -18,7 +18,8 @@ class CreateFilesTable extends Migration
             $table->string('name');
             $table->string('processes_id');//customer & requirement(type_files[A,B,C])
             $table->string('file_types_id');// A || B || C
-            $table->string('status');// @todo
+            $table->string('status');// @todo=
+            $table->string('location');
             $table->timestamps();
         });
     }

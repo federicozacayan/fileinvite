@@ -11,5 +11,6 @@ $factory->define(Files::class, function (Faker $faker) {
         'processes_id' => 1,
         'file_types_id' => 1,
         'status' => '//@todo',
+        'location' => '//@todo',
     ];
 });

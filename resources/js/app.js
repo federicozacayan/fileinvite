@@ -16,3 +16,17 @@ export const bus = new Vue();
 const app = new Vue({
     el: '#app',
 });
+
+
+/* show file value after file select */
+let all = document.querySelectorAll('.custom-file-input');
+[].forEach.call(all, function(div) {
+div.addEventListener('change',function(e){
+    var fileName = document.getElementById(e.target.id).files[0].name;
+    var nextSibling = e.target.nextElementSibling
+    nextSibling.innerText = fileName
+    console.log(e.target.id)
+    })
+});
+
+  

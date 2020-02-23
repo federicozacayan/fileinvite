@@ -10,7 +10,6 @@
                 <div class="card-header"><i class='fas fa-user'></i> {{ __('Create Customer') }}</div>
 
                 <div class="card-body">
-                <form id="create-requirement" action="{{ route('customer.store') }}" method="POST" >
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -20,6 +19,8 @@
                             </ul>
                         </div>
                     @endif
+                <form id="create-requirement" action="{{ route('customer.store') }}" method="POST" >
+                    
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" name="name"
                      placeholder="Jhon Doe">

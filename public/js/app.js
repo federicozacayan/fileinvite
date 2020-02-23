@@ -2065,6 +2065,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 var timer = null;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37851,25 +37853,34 @@ var render = function() {
           { staticClass: "list-group" },
           [
             _vm._l(_vm.data, function(d) {
-              return _c("li", { staticClass: "list-group-item" }, [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: _vm.host + "/admin/process/" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.set(d.id)
+              return _c(
+                "li",
+                {
+                  staticClass: "list-group-item d-flex justify-content-between"
+                },
+                [
+                  _c("i", { staticClass: "fas fa-sitemap" }),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v("#R" + _vm._s(d.id) + " - " + _vm._s(d.name))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "green",
+                      attrs: { href: _vm.host + "/admin/process/" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.set(d.id)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n            #R" + _vm._s(d.id) + " - " + _vm._s(d.name)
-                    )
-                  ]
-                )
-              ])
+                    },
+                    [_c("i", { staticClass: "fas fa-toggle-off" })]
+                  )
+                ]
+              )
             }),
             _vm._v(" "),
             _vm.data.length == 0
@@ -50171,6 +50182,17 @@ Vue.component('requirement-to-customer', __webpack_require__(/*! ./components/Re
 var bus = new Vue();
 var app = new Vue({
   el: '#app'
+});
+/* show file value after file select */
+
+var all = document.querySelectorAll('.custom-file-input');
+[].forEach.call(all, function (div) {
+  div.addEventListener('change', function (e) {
+    var fileName = document.getElementById(e.target.id).files[0].name;
+    var nextSibling = e.target.nextElementSibling;
+    nextSibling.innerText = fileName;
+    console.log(e.target.id);
+  });
 });
 
 /***/ }),

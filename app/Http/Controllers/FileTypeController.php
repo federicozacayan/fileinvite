@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FileType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FileTypeController extends Controller
 {
@@ -45,6 +46,7 @@ class FileTypeController extends Controller
             'requirement_id' =>  ['required']
             ]);
         $product = FileType::create($request->all());
+        $request->session()->flash('success', 'File type "'.$product->name.'" created was successfully.');
         return redirect("admin/requirement/$request->requirement_id/edit");
     }
 
@@ -82,7 +84,13 @@ class FileTypeController extends Controller
      */
     public function update(Request $request, FileType $fileType)
     {
+        $request->validate([
+            'name' => ['required'],
+            'description' => ['required']
+            ]);
+
         $fileType->update($request->all());
+        $request->session()->flash('success', 'File type "'.$fileType->name.'" updated successfully.');
         return redirect("admin/requirement/".$fileType->requirement->id."/edit");
     }
 

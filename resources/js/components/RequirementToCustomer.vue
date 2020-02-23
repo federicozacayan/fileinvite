@@ -9,10 +9,12 @@
         <label for="a">Requirements:</label>
         <ul class="list-group"> 
        
-            <li v-for="d in data" class="list-group-item" >
-                <a :href="host+'/admin/process/'"
+            <li v-for="d in data" class="list-group-item d-flex justify-content-between" >
+                <i class='fas fa-sitemap'></i>
+                <span>#R{{ d.id }} - {{ d.name }}</span>
+                <a class="green":href="host+'/admin/process/'"
                 v-on:click.prevent="set(d.id)">
-                #R{{ d.id }} - {{ d.name }}</a>
+                <i class="fas fa-toggle-off"></i></a>
             </li>
             <li v-if="data.length==0" class="list-group-item">No Requirement found.</li>
         </ul>

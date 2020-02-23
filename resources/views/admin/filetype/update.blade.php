@@ -12,6 +12,15 @@
                 <i class="fas fa-file"></i><b> {{ __('File Type') }}</b>
                 </div>
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form id="create-requirement" action="{{ route('filetype.update', [$filetype->id]) }}" method="POST" >
                         <input type="hidden" name="_method" value="PUT">
                         <label for="exampleInpnameutEmail1">File Type Name:</label>

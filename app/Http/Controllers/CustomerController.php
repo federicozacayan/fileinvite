@@ -52,6 +52,7 @@ class CustomerController extends Controller
             'email' => ['required', 'unique:customers']
             ]);
         $customer = Customer::create($request->all());
+        $request->session()->flash('success', 'Customer "'.$customer->name.'" created successfully.');
         return redirect("admin/customer/$customer->id/edit");
     }
 
@@ -108,6 +109,7 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         $customer->update($request->all());
+        $request->session()->flash('success', 'Customer "'.$customer->name.'" updated successfully.');
         return redirect("admin/customer/".$customer->id."/edit");
     }
 

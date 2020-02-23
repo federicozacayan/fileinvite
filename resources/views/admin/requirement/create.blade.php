@@ -19,7 +19,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                    @endif  
                     <label for="name">Requirement's Name:</label>
                     <input type="text" class="form-control" name="name"
                      placeholder="Request Benefit">
