@@ -29,4 +29,18 @@ div.addEventListener('change',function(e){
     })
 });
 
+let rejectedList = document.querySelectorAll('a.confirm-rejection');
+[].forEach.call(rejectedList, function(link) {
+    // do whatever
+    
+    link.addEventListener('click',(e)=>{
+        let answer = confirm("Reject this file?");
+        if(answer){
+            var reason = prompt("Please enter the reason to reject the document:", "Wrong Document");
+            window.location.href = link.getAttribute('href')+'&reason='+reason;
+        }
+        e.preventDefault()
+    })
+  });
+
   

@@ -14,26 +14,7 @@ class ProcessController extends Controller
     {
         $this->middleware('auth:admins');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -114,8 +95,9 @@ class ProcessController extends Controller
             ->get();
 
             foreach ($files as  $file) {
-                $arr = json_decode($file->status, true);
-                $file->status = (isset($arr['whatched']) && $arr['whatched']== true)?true:false;
+                // $arr = json_decode($file->status, true);
+                // $file->status = (isset($arr['whatched']) && $arr['whatched']== true)?true:false;
+                $file->status = json_decode($file->status, true);
             }
         // dd(DB::getQueryLog());
         // dd($files);
@@ -165,16 +147,5 @@ class ProcessController extends Controller
         // $process->update($request->all());
         // return redirect("admin/customer/".$process->customer->id."/edit");
         return "//@todo update process";
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Process  $process
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Process $process)
-    {
-        //
     }
 }

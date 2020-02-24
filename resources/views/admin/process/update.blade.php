@@ -73,17 +73,27 @@
                                     <i class="fas fa-download"></i> 
                                     <i class="fa fa-times-circle"></i> -->
                                     
-                                    <div>
-                                        <i aria-hidden="true" class="fas fa-thumbs-up gray"></i> 
-                                        <i aria-hidden="true" class="fas fa-thumbs-down gray"></i>
-                                    </div>
+                                    
+                                    
                                     @if($file->file_name == null)
+                                        <div>
+                                            <i aria-hidden="true" class="fas fa-thumbs-up gray"></i>
+                                            <i aria-hidden="true" class="fas fa-thumbs-down gray"></i>
+                                        </div>
                                         <!-- <i class="fa fa-times-circle"></i> -->
                                         <i aria-hidden="true" class="fas fa-eye-slash gray"></i> 
                                         <i class="fas fa-cloud-download-alt gray"></i>
                                         <i class="fas fa-hourglass-half red"></i>
                                         
                                     @else
+                                        <div>
+                                            <a href="{{  route('admin.file',[$file->file_id, 'thumbs'=>'up']) }}" title="Verify Document">
+                                                <i aria-hidden="true" class="fas fa-thumbs-up {{ isset($file->status['thumbs']) && $file->status['thumbs'] == 'up'?'green':'blue' }}"></i>
+                                            </a>
+                                            <a class="confirm-rejection"  href="{{  route('admin.file',[$file->file_id, 'thumbs'=>'down']) }}" title="Reject Document">
+                                                <i aria-hidden="true" class="fas fa-thumbs-down {{ isset($file->status['thumbs']) && $file->status['thumbs'] == 'down'?'red':'blue' }}"></i>
+                                            </a>
+                                        </div>
                                         @if($file->status)
                                         <i aria-hidden="true" class="fas fa-eye"></i> 
                                         @else

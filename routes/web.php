@@ -39,14 +39,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/password/reset/{token}','AdminResetPasswordController@showResetForm')->name('admin.password.reset');
     Route::post('/password/reset','AdminResetPasswordController@reset')->name('admin.password.update');
    
-    Route::resource('requirement', 'RequirementController');
+    Route::resource('requirement', 'RequirementController',['except' => ['show', 'destroy']]);
     Route::get('/requirement/search/{name}', 'RequirementController@search');
-    Route::resource('filetype', 'FileTypeController');
-    Route::resource('customer', 'CustomerController');
+    Route::resource('filetype', 'FileTypeController', ['except' => ['index', 'create', 'show', 'destroy']]);
+
+    Route::resource('customer', 'CustomerController',['except' => ['show', 'destroy']]);
     Route::get('/customer/search/{name}', 'CustomerController@search');
-    Route::resource('process', 'ProcessController');
+    Route::resource('process', 'ProcessController',['except' => ['index', 'create', 'show', 'destroy', 'update']]);
     Route::get('/mail', 'ProcessController@mail')->name('process.mail');
-    
+    Route::resource('files', 'FilesController',['only' => ['store']]);
     Route::get('/file/{id}', 'FilesController@adminDownload')->name('admin.file');
 
 });

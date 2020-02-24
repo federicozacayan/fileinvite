@@ -12,25 +12,7 @@ class FileTypeController extends Controller
     {
         $this->middleware('auth:admins');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        dd('asdf');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        dd('asdf');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,16 +32,7 @@ class FileTypeController extends Controller
         return redirect("admin/requirement/$request->requirement_id/edit");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\FileType  $fileType
-     * @return \Illuminate\Http\Response
-     */
-    public function show(FileType $fileType)
-    {
-        dd('ERROR');
-    }
+  
 
     /**
      * Show the form for editing the specified resource.
@@ -94,14 +67,4 @@ class FileTypeController extends Controller
         return redirect("admin/requirement/".$fileType->requirement->id."/edit");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\FileType  $fileType
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(FileType $fileType)
-    {
-        //
-    }
 }

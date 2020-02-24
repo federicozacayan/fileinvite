@@ -7,7 +7,7 @@
         <!-- Requirements -->
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Requirements') }}</div>
+                <div class="card-header">{{ __('Work with') }}</div>
 
                 <div class="card-body">
                     <!-- <label for="exampleInputEmail1">Search:</label>
@@ -23,10 +23,15 @@
                         <li class="list-group-item">#R400 - Make Complain</li>
                     </ul>
                     <hr> -->
-                    <button type="submit" class="btn btn-primary">
-                    <i class='fas fa-tasks'></i>
-                    Create new Requirement list
-                    </button>
+                    <a class="btn btn-primary" href="{{ route('requirement.index') }}">
+                    <i class='fas fa-sitemap'></i>
+                    Requirements
+                    </a>
+                    <hr>
+                    <a class="btn btn-primary" href="{{ route('customer.index') }}">
+                    <i class='fas fa-user'></i>
+                    Customers
+                    </a>
                     
                     
                 </div>

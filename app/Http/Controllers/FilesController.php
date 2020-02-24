@@ -68,14 +68,24 @@ class FilesController extends Controller
         }
     }
 
-    public function adminDownload($id)
+    public function adminDownload(Request $request, $id)
     {
-
         $file = Files::find($id);
         $statrus = json_decode($file->status, true);
         $statrus['whatched'] = true;
+        if($request->thumbs == 'up'){
+            $statrus['thumbs'] = $request->thumbs;
+        }
+        if($request->thumbs == 'down'){
+            $statrus['thumbs'] = $request->thumbs;
+            $statrus['reason'] = $request->reason;
+        }
         $file->status = json_encode($statrus);
         $file->save();
+        
+        if($request->thumbs){
+            return redirect('/admin/process/'.$file->processes_id.'/edit');
+        }
         return Storage::download($file->location, $file->name, []); 
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -65,11 +65,20 @@
                                         <span>#F{{$file->file_type_id}} - {{$file->file_type_name}}</span>
                                         <a href="#" title="{{$file->file_type_description}}"><i class="fa fa-info-circle"></i></a>
                                      </span>
-                                    
+                                    @if(isset($file->status['thumbs']) )
+                                        @if(isset($file->status['thumbs']) && $file->status['thumbs'] == 'up')
+                                        <i aria-hidden="true" class="fas fa-thumbs-up green"></i> 
+                                        @endif
+                                        @if(isset($file->status['thumbs']) && $file->status['thumbs'] == 'down')
+                                        <a href="#" title="{{ $file->status['reason'] }}"><i aria-hidden="true" class="fas fa-thumbs-down red"></i></a>
+                                        @endif
+                                    @else
                                     <div>
                                         <i aria-hidden="true" class="fas fa-thumbs-up gray"></i> 
                                         <i aria-hidden="true" class="fas fa-thumbs-down gray"></i>
                                     </div>
+                                    @endif
+                                    
                                     @if($file->file_name == null)
                                         <!-- <i class="fa fa-times-circle"></i> -->
                                         <i aria-hidden="true" class="fas fa-eye-slash gray"></i> 

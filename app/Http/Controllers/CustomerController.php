@@ -56,23 +56,13 @@ class CustomerController extends Controller
         return redirect("admin/customer/$customer->id/edit");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer)
-    {
-        //
-    }
     public function search(Request $request, $name )
     {
         // Requirement $requirement
-        
         $requirements = Customer::where('name','LIKE','%'.$name.'%')->get();
         return $requirements;
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -113,14 +103,4 @@ class CustomerController extends Controller
         return redirect("admin/customer/".$customer->id."/edit");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Customer $customer)
-    {
-        //
-    }
 }

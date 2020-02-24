@@ -56,18 +56,6 @@ class RequirementController extends Controller
         return redirect("admin/requirement/$requirement->id/edit");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Requirement  $requirement
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Requirement $requirement)
-    {
-        //
-    }
-
-
     public function search(Request $request, $name )
     {
         $requirements = DB::table('requirements')
@@ -113,16 +101,5 @@ class RequirementController extends Controller
         $requirement->update($request->all());
         $request->session()->flash('success', 'Requirement "'.$requirement->name.'" updated successfully.');
         return redirect("admin/requirement/".$requirement->id."/edit");
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Requirement  $requirement
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Requirement $requirement)
-    {
-        //
     }
 }

@@ -50194,6 +50194,20 @@ var all = document.querySelectorAll('.custom-file-input');
     console.log(e.target.id);
   });
 });
+var rejectedList = document.querySelectorAll('a.confirm-rejection');
+[].forEach.call(rejectedList, function (link) {
+  // do whatever
+  link.addEventListener('click', function (e) {
+    var answer = confirm("Reject this file?");
+
+    if (answer) {
+      var reason = prompt("Please enter the reason to reject the document:", "Wrong Document");
+      window.location.href = link.getAttribute('href') + '&reason=' + reason;
+    }
+
+    e.preventDefault();
+  });
+});
 
 /***/ }),
 
