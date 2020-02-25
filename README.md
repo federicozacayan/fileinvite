@@ -66,7 +66,7 @@ There are blank spaces in the desktop screen because it is available to introduc
 
 ![Create Requirement](https://github.com/federicozacayan/fileinvite/blob/master/resources/img/c4.png)
 
-- Asign Requirement to a Customer confirmation clickin in togle button
+- Assign Requirement to a Customer, confirmation clicking in toggle button
 
 ![Create Requirement](https://github.com/federicozacayan/fileinvite/blob/master/resources/img/c5.png)
 
@@ -99,7 +99,7 @@ There are blank spaces in the desktop screen because it is available to introduc
 
 ![Create Requirement](https://github.com/federicozacayan/fileinvite/blob/master/resources/img/f1.png)
 
-- File Downloaded
+- File Downloaded (eye icon)
 
 ![Create Requirement](https://github.com/federicozacayan/fileinvite/blob/master/resources/img/f2.png)
 
@@ -107,7 +107,7 @@ There are blank spaces in the desktop screen because it is available to introduc
 
 ![Create Requirement](https://github.com/federicozacayan/fileinvite/blob/master/resources/img/f3.png)
 
-- File Aproved Back Office side
+- File Aproved Back Office side, clicking icon
 
 ![Create Requirement](https://github.com/federicozacayan/fileinvite/blob/master/resources/img/f4.png)
 
